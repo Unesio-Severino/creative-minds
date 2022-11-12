@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
+
 export default function Post(){
 
     //Estado do formulario ao submeter a mensagem de post.
@@ -24,7 +25,6 @@ export default function Post(){
             username: user.displayName,
         });
     };
-
 
     return(
         <div className="my-20 p-12 shadow-lg rounded-lg max-w-md mx-auto">
