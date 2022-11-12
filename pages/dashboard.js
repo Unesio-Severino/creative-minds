@@ -25,8 +25,8 @@ export default function Dashboard() {
 
     return(
         <div>
-            <h1>Teus Posts</h1>
-            <div>Posts</div>
+            <h1>Tuas Postagens</h1>
+            <div>Postagem</div>
             <button onClick={() => auth.signOut()}>Sair</button>
         </div>
     );
