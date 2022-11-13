@@ -7,7 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <Layout>
-      <ToastContainer limit={1}/>
+      <ToastContainer limit={1} />
       <Component {...pageProps} />
     </Layout>
   );
