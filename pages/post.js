@@ -1,16 +1,17 @@
 import { auth, db } from "../utils/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useRouter } from "next/router";
+import Router, { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { collection, addDoc, serverTimestamp, doc, updateDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
 
 export default function Post() {
 
-    //Estado do formulario ao submeter a mensagem de post.
+    //Estado do formulário ao submeter a mensagem de post.
     const [post, setPost] = useState({ description: "" });
     const [user, loading] = useAuthState(auth);
     const route = useRouter();
+    const routeData = route.query;
 
     //Função para submit
     const submitPost = async (e) => {
@@ -35,23 +36,49 @@ export default function Post() {
         }
 
 
-        //Make a new post
-        const collectionRef = collection(db, 'posts');
-        await addDoc(collectionRef, {
-            ...post,
-            timestamp: serverTimestamp(),
-            user: user.uid,
-            avatar: user.photoURL,
-            username: user.displayName,
-        });
-        setPost({ description: "" });
-        return route.push('/')
+        if (post?.hasOwnProperty("id")){
+            const docRef = doc(db, 'posts', post.id);
+            const updatedPost = { ...post, timestamp: serverTimestamp() };
+            await updateDoc(docRef, updatedPost);
+            return route.push('/');
+        } else {
+
+            //Make a new post
+            const collectionRef = collection(db, 'posts');
+            await addDoc(collectionRef, {
+                ...post,
+                timestamp: serverTimestamp(),
+                user: user.uid,
+                avatar: user.photoURL,
+                username: user.displayName,
+            });
+            setPost({ description: "" });
+            toast.success('Novo post foi adicionado..!', {
+                position: toast.POSITION.TOP_CENTER,
+                autoClose: 1500,
+            });
+            return route.push('/');
+        }
     };
+
+    //Check our User
+    const checkUser = async () => {
+        if (loading) return;
+        if (!user) route.push("/auth/login");
+        if (routeData.id) {
+            setPost({ description: routeData.description, id: routeData.id });
+        }
+    };
+    useEffect(() => {
+        checkUser();
+    }, [user, loading]);
 
     return (
         <div className="my-20 p-12 shadow-lg rounded-lg max-w-md mx-auto">
             <form onSubmit={submitPost}>
-                <h1 className="text-2xl font-bold">Criar nova postagem</h1>
+                <h1 className="text-2xl font-bold">
+                    {post.hasOwnProperty("id") ? "Editar teu Post" : "Criar novo Post"}
+                </h1>
                 <div className="py-2">
                     <h3 className="text-lg font-medium py-2">Descrição</h3>
                     <textarea
