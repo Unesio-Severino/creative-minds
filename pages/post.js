@@ -87,7 +87,8 @@ export default function Post() {
                         className="bg-cyan-800 h-48 w-full text-white rounded-lg p-2 text-md">
                     </textarea>
                     <p className={`text-cyan-600 font-medium text-sm ${post.description.length > 300 ? "text-red-600" : ""}`}>
-                        {post.description.length}/300</p>
+                        {post.description.length}/300
+                    </p>
                 </div>
                 <button
                     type="submit"
