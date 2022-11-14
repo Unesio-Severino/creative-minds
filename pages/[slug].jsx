@@ -7,7 +7,8 @@ import {
     doc, arrayUnion,
     updateDoc,
     Timestamp,
-    onSnapshot
+    onSnapshot,
+    getComments
 } from "firebase/firestore";
 
 
@@ -61,7 +62,7 @@ export default function Details() {
 
 return (
     <div>
-        <Message {...routeData}></Message>
+        <Message {...routeData}> </Message>
         <div className="my-5">
             <div className="flex">
                 <input

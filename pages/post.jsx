@@ -1,6 +1,6 @@
 import { auth, db } from "../utils/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-import Router, { useRouter } from "next/router";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { collection, addDoc, serverTimestamp, doc, updateDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
