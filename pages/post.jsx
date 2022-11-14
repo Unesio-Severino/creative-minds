@@ -1,7 +1,7 @@
 import { auth, db } from "../utils/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useEffect, useState, checkUser } from "react";
 import { collection, addDoc, serverTimestamp, doc, updateDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
 
@@ -36,7 +36,7 @@ export default function Post() {
         }
 
 
-        if (post?.hasOwnProperty("id")){
+        if (post?.hasOwnProperty("id")) {
             const docRef = doc(db, 'posts', post.id);
             const updatedPost = { ...post, timestamp: serverTimestamp() };
             await updateDoc(docRef, updatedPost);

@@ -10,6 +10,7 @@ import {
     onSnapshot,
     getComments
 } from "firebase/firestore";
+import Image from 'next/image';
 
 
 export default function Details() {
@@ -83,7 +84,7 @@ return (
                 {allMessage?.map((message) => (
                     <div className="bg-white p-4 my-4 border-2" key={message.time}>
                         <div className="items-center gap-2 mb-4">
-                            <img
+                            <Image
                                 className="w-10 rounded-full"
                                 src={message.avatar} alt="avatar" />
                             <h2>{message.userName}</h2>
