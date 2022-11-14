@@ -1,3 +1,4 @@
+
 import { auth, db } from "../utils/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useRouter } from "next/router";
@@ -71,7 +72,8 @@ export default function Post() {
     };
     useEffect(() => {
         checkUser();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+
+         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [user, loading]);
 
     return (

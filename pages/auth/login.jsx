@@ -10,7 +10,6 @@ export default function Login(){
     const route = useRouter();
     const [user, loading] = useAuthState(auth);
 
-
 //Função para autenticação com a conta google
 const googleProvider = new GoogleAuthProvider();
 const GoogleLogin = async () => {
@@ -28,7 +27,8 @@ useEffect(() => {
     } else {
         console.log("login");
     }
-}, [route, user]);
+     // eslint-disable-next-line react-hooks/exhaustive-deps
+}, [route]);
 
     return(
         <div className="shadow-xl mt-32 p-10 text-gray-700 rounded-lg">

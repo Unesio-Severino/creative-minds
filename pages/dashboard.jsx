@@ -41,12 +41,13 @@ export default function Dashboard() {
     //Get users Data
     useEffect(() => {
         getData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [user, loading]);
+
+         // eslint-disable-next-line react-hooks/exhaustive-deps
+     }, [user, loading]);
 
     return (
         <div>
-            <h1>Minhas Postagens</h1>
+            <h1>Minhas Postagens </h1>
             <div>
                 {posts.map((post) => {
                     return <Message {...post} key={post.id}>
