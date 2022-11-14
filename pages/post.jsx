@@ -1,7 +1,7 @@
 import { auth, db } from "../utils/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useRouter } from "next/router";
-import { useEffect, useState, checkUser } from "react";
+import { useEffect, useState } from "react";
 import { collection, addDoc, serverTimestamp, doc, updateDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
 
@@ -71,7 +71,8 @@ export default function Post() {
     };
     useEffect(() => {
         checkUser();
-    }, [user, loading, checkUser]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [user, loading]);
 
     return (
         <div className="my-20 p-12 shadow-lg rounded-lg max-w-md mx-auto">

@@ -61,8 +61,9 @@ export default function Details() {
         return;
         getComments();
 
-    }, [getComments, router.isReady]);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [router.isReady]);
+        
 
 return (
     <div>
