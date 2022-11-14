@@ -28,7 +28,7 @@ useEffect(() => {
     } else {
         console.log("login");
     }
-}, [user]);
+}, [route, user]);
 
     return(
         <div className="shadow-xl mt-32 p-10 text-gray-700 rounded-lg">

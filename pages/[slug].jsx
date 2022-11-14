@@ -1,6 +1,6 @@
 import Message from '../components/message';
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { auth, db } from '../utils/firebase';
 import { toast } from "react-toastify";
 import {
@@ -57,9 +57,12 @@ export default function Details() {
 };
 
     useEffect(() => {
-        if (!router.isReady) return;
+        if (!router.isReady)
+        return;
         getComments();
-    }, [router.isReady]);
+
+    }, [getComments, router.isReady]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
 
 return (
     <div>

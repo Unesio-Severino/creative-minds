@@ -71,7 +71,7 @@ export default function Post() {
     };
     useEffect(() => {
         checkUser();
-    }, [user, loading]);
+    }, [user, loading, checkUser]);
 
     return (
         <div className="my-20 p-12 shadow-lg rounded-lg max-w-md mx-auto">

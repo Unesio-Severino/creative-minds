@@ -41,7 +41,7 @@ export default function Dashboard() {
     //Get users Data
     useEffect(() => {
         getData();
-    }, [user, loading]);
+    }, [user, loading, getData]);
 
     return (
         <div>
