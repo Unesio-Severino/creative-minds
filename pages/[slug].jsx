@@ -63,7 +63,7 @@ export default function Details() {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [router.isReady]);
-        
+
 
 return (
     <div>
@@ -88,7 +88,7 @@ return (
                 {allMessage?.map((message) => (
                     <div className="bg-white p-4 my-4 border-2" key={message.time}>
                         <div className="items-center gap-2 mb-4">
-                            <Image
+                            <img
                                 className="w-10 rounded-full"
                                 src={message.avatar} alt="avatar" />
                             <h2>{message.userName}</h2>
