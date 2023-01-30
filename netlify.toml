@@ -1,11 +1,11 @@
 # example netlify.toml
 
-[build]
-  command = "ci= npm run build"
-  publish = "out"
-
 [[plugins]]
-  package = "@netlify/plugin-nextjs"
+package = "@netlify/plugin-nextjs"
+
+[build]
+command = "yarn next build"
+publish = ".next"
   
   ## Uncomment to use this redirect for Single Page Applications like create-react-app.
   ## Not needed for static site generators.
