@@ -27,17 +27,10 @@ jobs:
     - run: npm run build --if-present
     - run: npm test
     
-    - name: Deploy to Netlify
-      uses: nwtgck/actions-netlify@v1.2
+    - name: Waiting for 200 from the Netlify Preview
+      uses: jakepartusch/wait-for-netlify-action@v1.4
+      id: waitFor200
       with:
-          publish-dir: './dist'
-          production-branch: master
-          deploy-message: "Deploy from GitHub Actions"
-          enable-pull-request-comment: false
-          enable-commit-comment: true
-          overwrites-pull-request-comment: true
-      env:
-          NETLIFY_AUTH_TOKEN: ${{ creative-app }}
-          NETLIFY_SITE_ID: ${{ be228875-3965-4363-a3b3-d08b5bd58a1a }}
-      timeout-minutes: 1
+           site_name: "feeds-app"
+           max_timeout: 60
 
