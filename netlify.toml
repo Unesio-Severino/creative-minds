@@ -4,7 +4,7 @@
 package = "@netlify/plugin-nextjs"
 
 [build]
-command = "yarn next build"
+command = "npm next build"
 publish = ".next"
   
   ## Uncomment to use this redirect for Single Page Applications like create-react-app.
@@ -19,10 +19,7 @@ publish = ".next"
 # these settings. You can define environment variables
 # here but we recommend using the Netlify UI for sensitive
 # values to keep them out of your source repository.
-[context.production]
-  publish = "output/"
-  command = "CI= npm run build"
-  environment = { NODE_VERSION = "v18.13.0" }
+
 
   ## (optional) Settings for Netlify Dev
   ## https://github.com/netlify/cli/blob/main/docs/netlify-dev.md#project-detection
