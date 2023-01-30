@@ -15,8 +15,7 @@ jobs:
     strategy:
       matrix:
         node-version: [14.x, 16.x, 18.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
+      
     steps:
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
@@ -33,13 +32,12 @@ jobs:
       with:
           publish-dir: './dist'
           production-branch: master
-          github-token: ${{ secrets.GITHUB_TOKEN }}
           deploy-message: "Deploy from GitHub Actions"
           enable-pull-request-comment: false
           enable-commit-comment: true
           overwrites-pull-request-comment: true
       env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ creative-app }}
+          NETLIFY_SITE_ID: ${{ be228875-3965-4363-a3b3-d08b5bd58a1a }}
       timeout-minutes: 1
 
