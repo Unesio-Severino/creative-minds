@@ -1,7 +1,7 @@
 # example netlify.toml
 
 [build]
-  command = "CI= npm run build"
+  command = "ci= npm run build"
   publish = "out"
 
 [[plugins]]
@@ -14,14 +14,14 @@
   #  to = "/index.html"
   #  status = 200
 
-  # Production context: all deploys from the Production branch
+# Production context: all deploys from the Production branch
 # set in your site’s Branches settings in the UI will inherit
 # these settings. You can define environment variables
 # here but we recommend using the Netlify UI for sensitive
 # values to keep them out of your source repository.
 [context.production]
   publish = "output/"
-  command = "make publish"
+  command = "CI= npm run build"
   environment = { NODE_VERSION = "v18.13.0" }
 
   ## (optional) Settings for Netlify Dev
