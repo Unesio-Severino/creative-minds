@@ -4,7 +4,7 @@
 package = "@netlify/plugin-nextjs"
 
 [build]
-command = "npm run build"
+command = CI='' npm run build
 publish = ".next"
   
   ## Uncomment to use this redirect for Single Page Applications like create-react-app.
